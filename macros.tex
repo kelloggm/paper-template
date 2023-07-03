@@ -1,0 +1,104 @@
+% Use a macro like this for your tool's name. This example is from the WPI paper.
+\newcommand{\ourFramework}{the Type Inference Framework\xspace}
+\newcommand{\OurFramework}{The Type Inference Framework\xspace}
+\newcommand{\ourFw}{TIF\xspace}
+
+%%% Todo comments
+\newcommand{\todo}[1]{{\color{red}\bfseries [[#1]]}}
+%% Comment or uncomment this line.
+%\renewcommand{\todo}[1]{\relax}
+
+\newcommand{\manu}[1]{\todo{#1 --MS}}
+
+% Don't show todo commands if this macro is defined.
+\ifdefined\notodocomments
+  \renewcommand{\todo}[1]{\relax}
+\fi
+
+\newif\ifanonymous
+% \anonymousfalse
+\anonymoustrue
+
+\newcommand{\anonurl}[1]{\ifanonymous URL removed for anonymity.\else\url{#1}\fi}
+\newcommand{\footnoteanonurl}[1]{\footnote{\anonurl{#1}}}
+
+% \|name| or \mathid{name} denotes identifiers and slots in formulas
+\def\|#1|{\mathid{#1}}
+\newcommand{\mathid}[1]{\ensuremath{\mathit{#1}}}
+% \<name> or \codeid{name} denotes computer code identifiers
+\def\<#1>{\codeid{#1}}
+% \protected\def\codeid#1{\ifmmode{\mbox{\sf{#1}}}\else{\sf #1}\fi}
+% \protected\def\codeid#1{\ifmmode{\mbox{\ttfamily{#1}}}\else{\ttfamily #1}\fi}
+\protected\def\codeid#1{\ifmmode{\mbox{\smaller\ttfamily{#1}}}\else{\smaller\ttfamily #1}\fi}
+
+\newcommand{\CalledMethodsBottom}{\<@Call\-ed\-Meth\-ods\-Bottom>\xspace}
+\newcommand{\CalledMethods}{\<@Call\-ed\-Meth\-ods>\xspace}
+\newcommand{\EnsuresCalledMethods}{\<@En\-sures\-Call\-ed\-Meth\-ods>\xspace}
+\newcommand{\MustCall}{\codeid{@Must\-Call}\xspace}
+\newcommand{\MustCallAlias}{\codeid{@Must\-Call\-Alias}\xspace}
+\newcommand{\MustCallUnknown}{\codeid{@Must\-Call\-Unknown}\xspace}
+\newcommand{\CreatesMustCallFor}{\<@Creates\-Must\-Call\-For>\xspace}
+% Deprecated
+\newcommand{\ResetMustCall}{\CreatesMustCallFor}
+
+% "trule" stands for ``type rule''
+\newcommand{\trule}[2]{\[\frac{#1}{#2}\]}
+\newcommand{\truleinline}[2]{\ensuremath{#1\mathrel{\vdash}#2}}
+\newcommand{\hastype}[1]{\mathbin{:}\trtext{#1}}
+\newcommand{\trcode}[1]{\codeid{\smaller\smaller #1}}
+\newcommand{\trtext}[1]{\mbox{\smaller\smaller #1}}
+\newcommand{\trquoted}[1]{\trcode{"}#1\trcode{"}}
+
+
+%%% Computed values
+
+% For any number that's referenced in the text itself (and a table), create a macro like these rather than copy-pasting.
+% These examples are from the WPI paper; you can delete them.
+
+\newcommand{\numTypeSystems}{11\xspace} % Formatter, index, interning, lock, nullness, regex, resourceleak, signature, signedness, InitializedFields, Optional
+\newcommand{\numModifiedTypeSystems}{2\xspace} % Formatter, Nullness (not Called Methods, because the postcondition code is general)
+\newcommand{\numProjects}{12\xspace}
+\newcommand{\numLOC}{88,680\xspace}
+\newcommand{\numHumanAnnos}{803\xspace}
+\newcommand{\percentInferred}{39\todo{check}\%\xspace}
+\newcommand{\warningReductionPercent}{45\todo{check}\%\xspace}
+\newcommand{\tsSpecificLoC}{61\todo{check}\xspace}
+
+%%% Miscellaneous
+
+\hyphenation{type-state}        % LaTeX defaults to "types-tate"
+
+%%% Space-saving hacks
+
+% Reduce indentation in lists.
+\setlength{\leftmargini}{.75\leftmargini}
+\setlength{\leftmarginii}{.75\leftmarginii}
+\setlength{\leftmarginiii}{.75\leftmarginiii}
+
+\newcommand{\prefigcaption}{\vspace{-5pt}}
+\newcommand{\posttablecaption}{\vspace{-5pt}}
+
+% Reduce the separation between figures and text.
+\addtolength{\textfloatsep}{-.25\textfloatsep}
+\addtolength{\dbltextfloatsep}{-.25\dbltextfloatsep}
+\addtolength{\floatsep}{-.25\floatsep}
+\addtolength{\dblfloatsep}{-.25\dblfloatsep}
+
+\newcommand{\zph}{\phantom{0}}
+\newcommand{\zzph}{\phantom{0}}
+
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\etc}{etc.\xspace}
+\newcommand{\etal}{et al.\xspace}
+\newcommand{\aka}{a.k.a.\xspace}
+
+%% This doesn't seem to be working.
+% Reduce indentation in lists.
+\setlength{\leftmargini}{.75\leftmargini}
+\setlength{\leftmarginii}{.75\leftmarginii}
+\setlength{\leftmarginiii}{.75\leftmarginiii}
+
+\newcommand{\artifactLocation}{[anonymized]\xspace}
+
+% LocalWords:  acks
