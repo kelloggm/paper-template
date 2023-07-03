@@ -11,7 +11,7 @@ Name it after the topic of the paper, with `-paper` appended to end. For example
 the RLC paper (FSE 2021) is `resource-leak-paper`. Call this new name $NAME for the rest
 of these instructions.
 2. run `sed -i "s/paper/$NAME/g" Makefile` (on a Mac, this must be `gsed`)
-3. run `sed -i "s/paper/$NAME/g" .github/workflows/ci.yaml` (on a Mac, this must be `gsed`)
+3. run `sed -i "s/paper.tex/$NAME.tex/g" .github/workflows/ci.yaml` (on a Mac, this must be `gsed`)
 4. run `mv paper.tex $NAME.tex`
 5. ensure that the resulting paper builds
 6. commit your changes and start writing!
