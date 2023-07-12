@@ -21,10 +21,7 @@ of these instructions.
 Here are some of the useful commands in the `Makefile`:
 * `make`: this will build the paper
 * `make $NAME-notodos.pdf`: this will build the paper with todos disabled (suitable for submission)
-* `make martin`: this will build the paper and then open it (using the system's `open` command) for viewing
-(it is named this because when I was a PhD student, I was the only one of my co-authors who was interested
-in this functionality)
-  TODO: How about naming this `make view`?
+* `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
 * `make onefile.tex`: builds a version of the paper in a single `.tex` file, suitable for submission
 to the publisher's website (i.e., with comments removed, etc.)
 
