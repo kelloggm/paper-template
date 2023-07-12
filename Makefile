@@ -1,6 +1,6 @@
 all: paper.pdf
 
-paper.pdf: bib-update
+paper.pdf: plume-bib-update
 	latexmk -pdf -interaction=nonstopmode -f paper.tex
 
 paper-notodos.pdf: paper.pdf
@@ -24,7 +24,6 @@ web: paper-notodos.pdf
 martin: paper.pdf
 	open $<
 
-# export BIBINPUTS ?= .:bib
 plume-bib:
 ifdef PLUMEBIB
 	ln -s ${PLUMEBIB} $@
@@ -32,7 +31,7 @@ else
 	git clone https://github.com/mernst/plume-bib.git
 endif
 .PHONY: plume-bib-update
-bib-update: plume-bib
+plume-bib-update: plume-bib
 # Even if this command fails, it does not terminate the make job.
 # However, to skip it, invoke make as:  make NOGIT=1 ...
 ifndef NOGIT

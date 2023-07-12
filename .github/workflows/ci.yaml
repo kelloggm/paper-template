@@ -14,6 +14,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+## TODO: In CI, I would run "make" instead of a LaTeX command.  That way, the CI
+## specification doesn't have to change if the name of the main file (currently
+## paper.tex) changes or if other checks are added in the makefile (such as
+## checks for trailing whitespace, etc.).  You could use the Docker image from
+## https://github.com/dante-ev/docker-texlive instead of the GitHub Actions
+## action.
+
+## TODO: Add instructions here about how to install LaTeX packages that might be
+## needed?  Or do you assume any non-standard ones are checked into the repository?
+
     - name: LaTeX compilation
       uses: dante-ev/latex-action@2021-A
       with:

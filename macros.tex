@@ -1,3 +1,5 @@
+%% TODO: A nit: I don't like "ourFramework".  Even in a draft of the paper,
+%% I think it's better to use a more readable macro name, such as "\theTIF".
 % Use a macro like this for your tool's name. This example is from the WPI paper.
 \newcommand{\ourFramework}{the Type Inference Framework\xspace}
 \newcommand{\OurFramework}{The Type Inference Framework\xspace}
@@ -15,8 +17,10 @@
   \renewcommand{\todo}[1]{\relax}
 \fi
 
+% Use like: \ifanonymous{ANONYMOUS TEXT}\else{NON-ANONNYMOUS TEXT}\fi
+% where the "\else{NON-ANONNYMOUS TEXT}" may be omitted.
 \newif\ifanonymous
-% \anonymousfalse
+%% Comment or uncomment this line
 \anonymoustrue
 
 \newcommand{\anonurl}[1]{\ifanonymous URL removed for anonymity.\else\url{#1}\fi}
@@ -85,20 +89,17 @@
 \addtolength{\dblfloatsep}{-.25\dblfloatsep}
 
 \newcommand{\zph}{\phantom{0}}
-\newcommand{\zzph}{\phantom{0}}
+\newcommand{\zzph}{\phantom{00}}
 
 \newcommand{\ie}{i.e.,\xspace}
 \newcommand{\eg}{e.g.,\xspace}
+%% TODO: the \xspace at the end of \etc and \etal is wrong, because these
+%% may end a sentence.  See how the "]]" at the end of the "Technique"
+%% section (section 2) appears on its own line rather than jammed against
+%% "etc." as it should.  You might not want to define these two macros.
 \newcommand{\etc}{etc.\xspace}
 \newcommand{\etal}{et al.\xspace}
 \newcommand{\aka}{a.k.a.\xspace}
 
-%% This doesn't seem to be working.
-% Reduce indentation in lists.
-\setlength{\leftmargini}{.75\leftmargini}
-\setlength{\leftmarginii}{.75\leftmarginii}
-\setlength{\leftmarginiii}{.75\leftmarginiii}
-
+%% TODO: Why doesn't one use "\anonurl" rather than introducing a new macro?
 \newcommand{\artifactLocation}{[anonymized]\xspace}
-
-% LocalWords:  acks
