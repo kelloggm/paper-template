@@ -6,9 +6,18 @@ NAME	:= paper
 BIBFILE := local.bib
 
 # To regenerate list of files:  latex-process-inputs --makefilelist paper.tex
+# The latex-process-inputs program is part of https://github.com/plume-lib/plume-scripts,
+# which is a collection of useful scripts. I recommend adding it to your PATH.
 TEX_FILES = \
-paper.tex
-
+paper.tex \
+macros.tex \
+abstract.tex \
+introduction.tex \
+technique.tex \
+implementation.tex \
+evaluation.tex \
+limitations.tex \
+relatedwork.tex
 
 all: ${NAME}.pdf
 
