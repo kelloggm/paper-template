@@ -13,4 +13,4 @@ jobs:
       - name: Run make
         uses: dante-ev/latex-action@latest
         with:
-          entrypoint: make
+          entrypoint: ./ci.sh
