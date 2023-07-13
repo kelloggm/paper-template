@@ -1,31 +1,16 @@
-# This CI setup forces the paper to build using a simple `latexmk` command.
+# This CI setup checks that running `make` can successfully build the paper.
+# If you need non-standard LaTeX packages, you can either commit them directly
+# to the repository or you can follow the instructions at https://github.com/dante-ev/latex-action#readme.
 
-name: paper build CI
-
-on:
-  push:
-    branches: [ "main" ]
-
+name: Build LaTeX document
+on: [push]
 jobs:
-  build:
-
+  build_latex:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-
-## TODO: In CI, I would run "make" instead of a LaTeX command.  That way, the CI
-## specification doesn't have to change if the name of the main file (currently
-## paper.tex) changes or if other checks are added in the makefile (such as
-## checks for trailing whitespace, etc.).  You could use the Docker image from
-## https://github.com/dante-ev/docker-texlive instead of the GitHub Actions
-## action.
-
-## TODO: Add instructions here about how to install LaTeX packages that might be
-## needed?  Or do you assume any non-standard ones are checked into the repository?
-
-    - name: LaTeX compilation
-      uses: dante-ev/latex-action@2021-A
-      with:
-        # The root LaTeX file to be compiled
-        root_file: paper.tex
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Run make
+        uses: dante-ev/latex-action@latest
+        with:
+          entrypoint: make
