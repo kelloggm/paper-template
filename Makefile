@@ -22,10 +22,10 @@ relatedwork.tex
 all: ${NAME}.pdf
 
 .PRECIOUS: %.pdf
-${NAME}.pdf: ${TEX_FILES}
+%.pdf:
 	${MAKE} plume-bib-update
 # Possibly add "-shell-escape" argument.
-	latexmk -bibtex -pdf -interaction=nonstopmode -f "${NAME}.tex"
+	latexmk -bibtex -pdf -interaction=nonstopmode -f '$(basename $<).tex'
 
 ${NAME}-notodos.pdf: ${NAME}.pdf
 	pdflatex "\def\notodocomments{}\input{${NAME}}"
