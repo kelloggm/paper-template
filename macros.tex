@@ -1,9 +1,10 @@
-%% TODO: A nit: I don't like "ourFramework".  Even in a draft of the paper,
-%% I think it's better to use a more readable macro name, such as "\theTIF".
-% Use a macro like this for your tool's name. This example is from the WPI paper.
-\newcommand{\ourFramework}{the Type Inference Framework\xspace}
-\newcommand{\OurFramework}{The Type Inference Framework\xspace}
-\newcommand{\ourFw}{TIF\xspace}
+% Use a macro like this for your tool's name. Never actually use your tool's name
+% in the text: always use the macro.
+\newcommand{\tool}{the Type Inference Framework\xspace}
+\newcommand{\Tool}{The Type Inference Framework\xspace}
+\newcommand{\toolShort}{TIF\xspace}
+%% Mike thinks it's better to use a more readable macro name, such as "\theIndexChecker" rather than "\tool".
+%% Martin doesn't really care either way; you can create a macro for your tool's name or leave it as-is.
 
 %%% Todo comments
 \newcommand{\todo}[1]{{\color{red}\bfseries [[#1]]}}
@@ -93,13 +94,3 @@
 
 \newcommand{\ie}{i.e.,\xspace}
 \newcommand{\eg}{e.g.,\xspace}
-%% TODO: the \xspace at the end of \etc and \etal is wrong, because these
-%% may end a sentence.  See how the "]]" at the end of the "Technique"
-%% section (section 2) appears on its own line rather than jammed against
-%% "etc." as it should.  You might not want to define these two macros.
-\newcommand{\etc}{etc.\xspace}
-\newcommand{\etal}{et al.\xspace}
-\newcommand{\aka}{a.k.a.\xspace}
-
-%% TODO: Why doesn't one use "\anonurl" rather than introducing a new macro?
-\newcommand{\artifactLocation}{[anonymized]\xspace}
