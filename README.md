@@ -30,5 +30,6 @@ to the publisher's website (i.e., with comments removed, etc.)
 Here are some of the most useful macros defined in `macros.tex`:
 * `\<`: use this short macro for in-line code snippets, e.g., `\<@Nullable String>`
 * `\trule`: use this macro for small type rules
-* `\etc`, `\eg`, and `\ie` for common Latin phrases that are easy to mess up
+* `\eg`, and `\ie` for common Latin phrases that are easy to mess up
+* the `\researchquestions` environment for stylized research questions
 * others
