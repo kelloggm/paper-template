@@ -1,7 +1,8 @@
-This repository contains the template that I use for new research papers. The most important parts
-are the `Makefile` (which contains a number of useful rules) and `macros.tex` (which contains a number
-of useful macros, such as `\<`, that you should familiarize yourself with and use as appropriate). The
-main file (`paper.tex`) also includes packages that we almost always need, such as `cleverref`.
+This repository contains a template for research papers. The most important
+parts are the `Makefile` (which contains a number of useful rules) and
+`macros.tex` (which contains a number of useful macros, such as `\<`, that you
+should familiarize yourself with and use as appropriate). The main file
+(`paper.tex`) also includes commonly-used packages, such as `cleverref`.
 
 ## How to use
 
@@ -11,12 +12,11 @@ Name it after the topic of the paper, with `-paper` appended to end. For example
 the RLC paper (FSE 2021) is `resource-leak-paper`. Call this new name $NAME for the rest
 of these instructions.
 2. run `sed -i "s/paper/$NAME/g" Makefile` (on a Mac, this must be `gsed`)
-3. run `sed -i "s/paper.tex/$NAME.tex/g" .github/workflows/ci.yaml` (on a Mac, this must be `gsed`)
-4. run `git mv paper.tex $NAME.tex`
-5. ensure that the resulting paper builds:  run `make`
-6. commit your changes and start writing!
+3. run `git mv paper.tex $NAME.tex`
+4. ensure that the resulting paper builds:  run `make`
+5. commit your changes and start writing!
 
-## Useful commands
+## Useful Makefile targets
 
 Here are some of the useful commands in the `Makefile`:
 * `make`: this will build the paper
@@ -24,6 +24,8 @@ Here are some of the useful commands in the `Makefile`:
 * `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
 * `make onefile.tex`: builds a version of the paper in a single `.tex` file, suitable for submission
 to the publisher's website (i.e., with comments removed, etc.)
+
+## Useful LaTeX macros
 
 Here are some of the most useful macros defined in `macros.tex`:
 * `\<`: use this short macro for in-line code snippets, e.g., `\<@Nullable String>`

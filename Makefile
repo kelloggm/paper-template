@@ -17,7 +17,8 @@ technique.tex \
 implementation.tex \
 evaluation.tex \
 limitations.tex \
-relatedwork.tex
+relatedwork.tex \
+conclusion.tex
 
 all: ${NAME}.pdf
 
@@ -32,17 +33,16 @@ ${NAME}-notodos.pdf: ${NAME}.pdf
 	pdflatex "\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
-# Upload onefile.zip to the publisher website
+# You will upload onefile.zip to the publisher website after acceptance.
 onefile.zip: onefile.tex
 	zip onefile.zip onefile.tex acmart.cls ACM-Reference-Format.bst
-onefile.tex: $(filter-out onefile.tex, $(wildcard *.tex))
+onefile.tex: $(filter-out onefile.tex, ${TEX_FILES})
 	latex-process-inputs ${NAME}.tex > onefile.tex
 
 # This target creates:
 #   https://homes.cs.washington.edu/~mernst/tmp678/${NAME}.pdf
 web: ${NAME}-notodos.pdf
 	cp -pf $^ ${HOME}/public_html/tmp678/${NAME}.pdf
-.PHONY: ${NAME}-singlecolumn.pdf ${NAME}-notodos.pdf
 
 view: ${NAME}.pdf
 	open $<
@@ -62,9 +62,9 @@ else
 	git clone https://github.com/mernst/plume-bib.git
 endif
 .PHONY: plume-bib-update
-plume-bib-update: plume-bib
-# Even if this command fails, it does not terminate the make job.
+# Even if the plume-bib-update target fails, it does not terminate the make job.
 # However, to skip it, invoke make as:  make NOGIT=1 ...
+plume-bib-update: plume-bib
 ifndef NOGIT
 	-(cd plume-bib && git pull && make)
 endif
