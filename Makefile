@@ -26,11 +26,11 @@ all: ${NAME}.pdf
 ${NAME}.pdf: ${TEX_FILES}
 	${MAKE} plume-bib-update
 # Possibly add "-shell-escape" argument.
-	latexmk -bibtex -pdf -interaction=nonstopmode -f "${NAME}.tex"
+	latexmk -bibtex -pdf -shell-escape -interaction=nonstopmode -f "${NAME}.tex"
 
 ${NAME}-notodos.pdf: ${NAME}.pdf
-	pdflatex "\def\notodocomments{}\input{${NAME}}"
-	pdflatex "\def\notodocomments{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
 # You will upload onefile.zip to the publisher website after acceptance.
