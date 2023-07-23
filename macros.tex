@@ -36,6 +36,10 @@
 % \protected\def\codeid#1{\ifmmode{\mbox{\ttfamily{#1}}}\else{\ttfamily #1}\fi}
 \protected\def\codeid#1{\ifmmode{\mbox{\smaller\ttfamily{#1}}}\else{\smaller\ttfamily #1}\fi}
 
+% research question list, based on the answer to https://tex.stackexchange.com/questions/559305/how-to-format-for-two-column-research-question
+\newlist{researchquestions}{enumerate}{1}
+\setlist[researchquestions]{label*=\textbf{RQ\arabic*}}
+
 \newcommand{\CalledMethodsBottom}{\<@Call\-ed\-Meth\-ods\-Bottom>\xspace}
 \newcommand{\CalledMethods}{\<@Call\-ed\-Meth\-ods>\xspace}
 \newcommand{\EnsuresCalledMethods}{\<@En\-sures\-Call\-ed\-Meth\-ods>\xspace}
