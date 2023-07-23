@@ -27,6 +27,9 @@ ${NAME}.pdf: ${TEX_FILES}
 	${MAKE} plume-bib-update
 # Possibly add "-shell-escape" argument.
 	latexmk -bibtex -pdf -interaction=nonstopmode -f "${NAME}.tex"
+# Fail the build if there are undefined references or citations.
+	@ ! grep "Warning: There were undefined references." "${NAME}.log"
+	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
 
 ${NAME}-notodos.pdf: ${NAME}.pdf
 	pdflatex "\def\notodocomments{}\input{${NAME}}"
