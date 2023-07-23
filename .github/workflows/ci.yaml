@@ -3,7 +3,7 @@
 # to the repository or you can follow the instructions at https://github.com/dante-ev/latex-action#readme.
 
 name: Build LaTeX document
-on: [push]
+on: [push, pull_request]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
