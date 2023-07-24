@@ -1,10 +1,14 @@
-% Use a macro like this for your tool's name. Never actually use your tool's name
+% Use a macro like this for your tool's name. Do not use your tool's name
 % in the text: always use the macro.
-\newcommand{\tool}{the Type Inference Framework\xspace}
-\newcommand{\Tool}{The Type Inference Framework\xspace}
-\newcommand{\toolShort}{TIF\xspace}
-%% Mike thinks it's better to use a more readable macro name, such as "\theIndexChecker" rather than "\tool".
-%% Martin doesn't really care either way; you can create a macro for your tool's name or leave it as-is.
+\newcommand{\theTypeInferenceFramework}{the Type Inference Framework\xspace}
+\newcommand{\TheTypeInferenceFramework}{The Type Inference Framework\xspace}
+\newcommand{\TIF}{TIF\xspace}
+%% Alternate formulation; use whichever of the two you prefer:
+% \newcommand{\tool}{the Type Inference Framework\xspace}
+% \newcommand{\Tool}{The Type Inference Framework\xspace}
+% \newcommand{\toolShort}{TIF\xspace}
+
+\newcommand{\conferencePageLimit}{10}
 
 %%% Todo comments
 \newcommand{\todo}[1]{{\color{red}\bfseries [[#1]]}}
@@ -35,6 +39,7 @@
 % \protected\def\codeid#1{\ifmmode{\mbox{\sf{#1}}}\else{\sf #1}\fi}
 % \protected\def\codeid#1{\ifmmode{\mbox{\ttfamily{#1}}}\else{\ttfamily #1}\fi}
 \protected\def\codeid#1{\ifmmode{\mbox{\smaller\ttfamily{#1}}}\else{\smaller\ttfamily #1}\fi}
+% \protected\def\codeid#1{\mintinline{java}{#1}}
 
 % research question list, based on the answer to https://tex.stackexchange.com/questions/559305/how-to-format-for-two-column-research-question
 \newlist{researchquestions}{enumerate}{1}

@@ -1,9 +1,7 @@
 # This CI setup checks that running `make` can successfully build the paper.
 
 name: Build LaTeX document
-
 on: [push, pull_request]
-
 jobs:
   make:
     runs-on: ubuntu-latest
