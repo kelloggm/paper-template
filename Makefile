@@ -22,6 +22,8 @@ conclusion.tex
 
 all: ${NAME}.pdf
 
+# If this target does not work, then maybe the variable TEX_FILES contains a
+# non-existent file, in which case its definition needs to be updated.
 .PRECIOUS: %.pdf
 ${NAME}.pdf: ${TEX_FILES}
 	${MAKE} plume-bib-update
