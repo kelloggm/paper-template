@@ -5,29 +5,11 @@
 NAME	:= paper
 BIBFILE := local.bib
 
-# To regenerate list of files:  latex-process-inputs --makefilelist paper.tex
-# The latex-process-inputs program is part of https://github.com/plume-lib/plume-scripts,
-# which is a collection of useful scripts. I recommend adding it to your PATH.
-TEX_FILES = \
-paper.tex \
-macros.tex \
-abstract.tex \
-introduction.tex \
-technique.tex \
-implementation.tex \
-evaluation.tex \
-limitations.tex \
-relatedwork.tex \
-conclusion.tex
-
 all: ${NAME}.pdf
 
-# If this target does not work, then maybe the variable TEX_FILES contains a
-# non-existent file, in which case its definition needs to be updated.
 .PRECIOUS: %.pdf
-${NAME}.pdf: ${TEX_FILES}
-	${MAKE} plume-bib-update
-	latexmk -bibtex -pdf -shell-escape -interaction=nonstopmode -f "${NAME}.tex"
+${NAME}.pdf: plume-bib-update
+	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
   # Fail the build if there are undefined references or citations.
 	@ ! grep "Warning: There were undefined references." "${NAME}.log"
 	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
@@ -40,7 +22,9 @@ ${NAME}-notodos.pdf: ${NAME}.pdf
 # You will upload onefile.zip to the publisher website after acceptance.
 onefile.zip: onefile.tex
 	zip onefile.zip onefile.tex acmart.cls ACM-Reference-Format.bst
-onefile.tex: $(filter-out onefile.tex, ${TEX_FILES})
+# The latex-process-inputs program is part of https://github.com/plume-lib/plume-scripts,
+# which is a collection of useful scripts. I recommend adding it to your PATH.
+onefile.tex:
 	latex-process-inputs ${NAME}.tex > onefile.tex
 
 # This target creates:
@@ -53,7 +37,7 @@ view: ${NAME}.pdf
 
 ispell: spell
 spell:
-	for file in ${TEX_FILES}; do ispell $$file; done
+	for file in `latex-process-inputs -list ${NAME}.tex`; do ispell $$file; done
 
 # Count words in the abstract, which some conferences limit.
 abs-words:
