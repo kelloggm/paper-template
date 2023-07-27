@@ -3,7 +3,6 @@
 -include Makefile.user
 
 NAME	:= paper
-BIBFILE := local.bib
 
 all: ${NAME}.pdf
 
