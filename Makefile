@@ -73,9 +73,10 @@ ifndef NOGIT
 	-(cd plume-bib && git pull && make)
 endif
 
+.PHONY: tags
 TAGS: tags
 tags:
 	etags `latex-process-inputs -list ${NAME}.tex`
 
 clean:
-	latexmk -C '${NAME}.tex'
+	latexmk -C "${NAME}.tex"
