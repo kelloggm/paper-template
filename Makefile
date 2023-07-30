@@ -53,7 +53,7 @@ endif
 # However, to skip it, invoke make as:  make NOGIT=1 ...
 plume-bib-update: plume-bib
 ifndef NOGIT
-	-(cd plume-bib && git pull && make)
+	-(cd plume-bib && GIT_TERMINAL_PROMPT=0 git pull && make)
 endif
 
 .PHONY: tags
