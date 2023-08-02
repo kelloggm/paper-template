@@ -16,6 +16,11 @@ of these instructions.
 4. ensure that the resulting paper builds:  run `make`
 5. commit your changes and start writing!
 
+Do not add your experimental scripts or anything else that might need to go into
+your paper's artifact to the paper repository. Generally, you want to keep the paper
+repository private (no one else needs to see your todo comments!), but you will eventually
+want to make the artifact repository public (usually, it can be public from the start).
+
 ## Useful Makefile targets
 
 Here are some of the useful commands in the `Makefile`:
