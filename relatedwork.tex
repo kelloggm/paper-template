@@ -9,3 +9,14 @@
   with just a list of related papers, and create the real related work
   section towards the end of the process (once the work in this paper has
   stabilized).}
+
+\todo{Note that when adding a citation, you should always put a non-breaking
+  space (\<\textasciitilde> in the \<.tex> file) before calling the \<\\cite> macro. So, your
+  citation should look like:}
+\begin{verbatim}
+WPI~\cite{KelloggDNAE2023}
+\end{verbatim}
+\todo{and not:}
+\begin{verbatim}
+WPI\cite{KelloggmDNAE2023}
+\end{verbatim}
