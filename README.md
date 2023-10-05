@@ -11,7 +11,7 @@ You can use this repository to create a new paper. To do so, follow these steps:
 Name it after the topic of the paper, with `-paper` appended to end. For example,
 the RLC paper (FSE 2021) is `resource-leak-paper`. Call this new name $NAME for the rest
 of these instructions.
-2. run `sed -i "s/paper/$NAME/g" Makefile` (on a Mac, this must be `gsed`)
+2. run `sed -i "s/paper/$NAME/g" Makefile .gitignore` (on a Mac, this must be `gsed`)
 3. run `git mv paper.tex $NAME.tex`
 4. ensure that the resulting paper builds:  run `make`
 5. commit your changes and start writing!
