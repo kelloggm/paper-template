@@ -7,7 +7,7 @@ should familiarize yourself with and use as appropriate). The main file
 ## How to use
 
 You can use this repository to create a new paper. To do so, follow these steps:
-1. use GitHub to create a new copy of this repository (this is a template repository).
+1. use GitHub to create a new, private copy of this repository (this is a template repository).
 Name it after the topic of the paper, with `-paper` appended to end. For example,
 the RLC paper (FSE 2021) is `resource-leak-paper`. Call this new name $NAME for the rest
 of these instructions.
