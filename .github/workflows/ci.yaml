@@ -10,4 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      # As of 2023-10-21, this update is necessary to get around a bug
+      # in the acmart.class in the texlive/texlive docker image.
+      - name: Update Tex Live distribution
+        run: tlmgr update --self --all
       - run: make
