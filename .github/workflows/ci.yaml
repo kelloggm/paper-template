@@ -6,8 +6,9 @@ jobs:
   make:
     runs-on: ubuntu-latest
     container:
-      image: texlive/texlive
+      image: texlive/texlive:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - run: tlmgr update --self --all
       - run: make
