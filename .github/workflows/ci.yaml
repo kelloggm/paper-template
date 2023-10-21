@@ -6,7 +6,7 @@ jobs:
   make:
     runs-on: ubuntu-latest
     container:
-      image: texlive/texlive
+      image: texlive/texlive:TL2022-historic
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
