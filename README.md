@@ -40,3 +40,10 @@ Here are some of the most useful macros defined in `macros.tex`:
 * `\eg`, and `\ie` for common Latin phrases that are easy to mess up
 * the `\researchquestions` environment for stylized research questions
 * others
+
+## Overleaf
+
+If you copy this template to Overleaf, then Overleaf will show you a PDF with
+broken citations.  You can ignore this problem, but be sure to run `make` in
+this directory to generate a PDF with correct citations.  Also be sure to look
+at the output of `make`, because Overleaf suppresses some errors.
