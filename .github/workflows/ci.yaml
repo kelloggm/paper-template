@@ -9,7 +9,10 @@ jobs:
       image: texlive/texlive
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          show-progress: false
       # As of 2023-10-21, this update is necessary to get around a bug
       # in the acmart.class in the texlive/texlive docker image.
       - name: Update Tex Live distribution
