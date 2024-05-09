@@ -46,7 +46,7 @@ plume-bib:
 ifdef PLUMEBIB
 	ln -s ${PLUMEBIB} $@
 else
-	git clone https://github.com/mernst/plume-bib.git
+	git clone --filter=blob:none https://github.com/mernst/plume-bib.git
 endif
 .PHONY: plume-bib-update
 # Even if the plume-bib-update target fails, it does not terminate the make job.
