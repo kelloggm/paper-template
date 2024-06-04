@@ -18,6 +18,11 @@ ${NAME}-notodos.pdf: ${NAME}.pdf
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
+${NAME}-long.pdf: ${NAME}.pdf
+	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
+	cp -pf ${NAME}.pdf $@
+
 # You will upload onefile.zip to the publisher website after acceptance.
 onefile.zip: onefile.tex
 	zip onefile.zip onefile.tex acmart.cls ACM-Reference-Format.bst
