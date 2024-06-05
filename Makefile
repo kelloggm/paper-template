@@ -7,20 +7,28 @@ NAME	:= paper
 all: ${NAME}.pdf
 
 .PRECIOUS: %.pdf
-${NAME}.pdf: plume-bib-update
-	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
+${NAME}.pdf: plume-bib-update pdf-ignore-undefined
   # Fail the build if there are undefined references or citations.
 	@ ! grep "Warning: There were undefined references." "${NAME}.log"
 	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
 
-${NAME}-notodos.pdf: ${NAME}.pdf
+.PHONY: pdf-ignore-undefined
+pdf-ignore-undefined:
+	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
+
+${NAME}-notodos.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
-${NAME}-long.pdf: ${NAME}.pdf
+${NAME}-long.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
+	cp -pf ${NAME}.pdf $@
+
+${NAME}-long-notodos.pdf: pdf-ignore-undefined
+	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
 # You will upload onefile.zip to the publisher website after acceptance.
