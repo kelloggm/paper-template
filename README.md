@@ -26,14 +26,14 @@ want to make the artifact repository public (usually, it can be public from the 
 ## Useful Makefile targets
 
 Here are some of the useful commands in the `Makefile`:
-* `make`: this will build the paper
-* `make $NAME-notodos.pdf`: this will build the paper with todos disabled (suitable for submission)
-* `make $NAME-long.pdf`: this will build the paper and the "long" version of it
-   (i.e., the paper that includes the text within the `\iflongversion ... \fi` macro).
-   **Note:** the long version of the paper will *not* be built if the standard
-   version of the paper builds with any errors.
+* `make`: build the paper, `$NAME.pdf`
+* `make $NAME-notodos.pdf`: build the paper with todos disabled (suitable for submission)
+* `make $NAME-long.pdf`: build the long version of the paper
+   (including the text within `\iflongversion ... \fi`)
+* `make $NAME-long-notodos.pdf`: this will build the long version of the paper
+   with todos disabled
 * `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
-* `make onefile.tex`: builds a version of the paper in a single `.tex` file, suitable for submission
+* `make onefile.tex`: creates a single `.tex` file containing the paper, suitable for submission
 to the publisher's website (i.e., with comments removed, etc.)
 
 ## Useful LaTeX macros
@@ -51,3 +51,10 @@ If you copy this template to Overleaf, then Overleaf will show you a PDF with
 broken citations.  You can ignore this problem, but be sure to run `make` in
 this directory to generate a PDF with correct citations.  Also be sure to look
 at the output of `make`, because Overleaf suppresses some errors.
+
+To get citations within Overleaf, copy a snapshot of
+https://github.com/mernst/plume-bib to the plume-bib directory
+and remove "plume-bib" from `.gitignore`.
+(You don't have to make any changes to the Makefile.)
+The disadvantage of making a copy is that you won't benefit from updates to
+plume-bib.  The advantage is that you will see citations on Overleaf.
