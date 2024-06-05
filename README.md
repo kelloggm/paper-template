@@ -29,7 +29,7 @@ Here are some of the useful commands in the `Makefile`:
 * `make`: this will build the paper
 * `make $NAME-notodos.pdf`: this will build the paper with todos disabled (suitable for submission)
 * `make $NAME-long.pdf`: this will build the paper and the "long" version of it
-   (i.e., includes the text within the `\iflongversion ... \fi` macro).
+   (i.e., the paper that includes the text within the `\iflongversion ... \fi` macro).
    **Note:** the long version of the paper will *not* be built if the standard
    version of the paper builds with any errors.
 * `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
