@@ -16,16 +16,22 @@ ${NAME}.pdf: plume-bib-update pdf-ignore-undefined
 pdf-ignore-undefined:
 	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
 
+.PHONY: notodos
+notodos: ${NAME}-notodos.pdf
 ${NAME}-notodos.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
+.PHONY: long
+long: ${NAME}-long.pdf
 ${NAME}-long.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
+.PHONY: long-notodos
+long-notodos: ${NAME}-long-notodos.pdf
 ${NAME}-long-notodos.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
