@@ -28,10 +28,13 @@ want to make the artifact repository public (usually, it can be public from the 
 Here are some of the useful commands in the `Makefile`:
 * `make`: build the paper, `$NAME.pdf`
 * `make $NAME-notodos.pdf`: build the paper with todos disabled (suitable for submission)
+  * Alternatively: `make notodos`
 * `make $NAME-long.pdf`: build the long version of the paper
    (including the text within `\iflongversion ... \fi`)
+  * Alternatively: `make long`
 * `make $NAME-long-notodos.pdf`: this will build the long version of the paper
    with todos disabled
+  * Alternatively: `make long-notodos`
 * `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
 * `make onefile.tex`: creates a single `.tex` file containing the paper, suitable for submission
 to the publisher's website (i.e., with comments removed, etc.)
