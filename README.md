@@ -60,6 +60,6 @@ you a PDF with broken citations.  You have two options:
 directory to generate a PDF with correct citations whenever needed.
 
 2. Fix citations within Overleaf.  Periodically run `make copy-plume-bib`
-and commit the changes, including any files in the `plume-bib`
+and commit and push the changes, including any files in the `plume-bib`
 subdirectory.  If you make changes within the `plume-bib` subdirectory,
 also submit a pull request to https://github.com/mernst/plume-bib .
