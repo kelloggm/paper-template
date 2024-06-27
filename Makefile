@@ -4,16 +4,18 @@
 
 NAME	:= paper
 
+default: all
+
 all: ${NAME}.pdf
 
 .PRECIOUS: %.pdf
-${NAME}.pdf: plume-bib-update pdf-ignore-undefined
+${NAME}.pdf: pdf-ignore-undefined
   # Fail the build if there are undefined references or citations.
 	@ ! grep "Warning: There were undefined references." "${NAME}.log"
 	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
 
 .PHONY: pdf-ignore-undefined
-pdf-ignore-undefined:
+pdf-ignore-undefined: plume-bib-update
 	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
 
 .PHONY: notodos
@@ -65,7 +67,7 @@ plume-bib:
 ifdef PLUMEBIB
 	ln -s ${PLUMEBIB} $@
 else
-	git clone --filter=blob:none https://github.com/mernst/plume-bib.git
+	git clone https://github.com/mernst/plume-bib.git
 endif
 .PHONY: plume-bib-update
 # Even if the plume-bib-update target fails, it does not terminate the make job.
@@ -76,6 +78,16 @@ ifneq (,$(wildcard plume-bib/.git))
 	-(cd plume-bib && GIT_TERMINAL_PROMPT=0 git pull && make)
 endif
 endif
+
+plume-bib-copy:
+	rm -f master.zip
+	wget https://github.com/mernst/plume-bib/archive/refs/heads/master.zip
+	rm -rf plume-bib-master
+	unzip master.zip
+	rm -rf plume-bib
+	mv plume-bib-master plume-bib
+	sed -i 's/^plume-bib$$/# plume-bib/' .gitignore
+	rm -f master.zip
 
 .PHONY: tags
 TAGS: tags
