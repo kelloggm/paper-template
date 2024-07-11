@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v3
       # As of 2023-10-21, this update is necessary to get around a bug
       # in the acmart.class in the texlive/texlive docker image.
-      - name: Update Tex Live distribution
-        run: tlmgr update --self --all
+      # retries up to 3 times in case of network failures.
+      - name: Update Tex Live distribution 
+        run: (echo "=== tlmgr update attempt 1 ===" && tlmgr update --self --all) || \
+	     (echo "=== tlmgr update attempt 2 ===" && tlmgr update --self --all) || \
+	     (echo "=== tlmgr update attempt 3 ===" && tlmgr update --self --all)
       - run: make
