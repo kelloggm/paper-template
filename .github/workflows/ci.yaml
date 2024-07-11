@@ -15,6 +15,7 @@ jobs:
           show-progress: false
       # As of 2023-10-21, this update is necessary to get around a bug
       # in the acmart.class in the texlive/texlive docker image.
+      # Retry up to 3 times in case of network failures.
       - name: Update Tex Live distribution
-        run: tlmgr update --self --all
+        run: tlmgr update --self --all || (sleep 5 && echo "=== tlmgr update attempt 2 ===" && tlmgr update --self --all) || (sleep 15 && echo "=== tlmgr update attempt 3 ===" && tlmgr update --self --all)
       - run: make
