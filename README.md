@@ -26,10 +26,17 @@ want to make the artifact repository public (usually, it can be public from the 
 ## Useful Makefile targets
 
 Here are some of the useful commands in the `Makefile`:
-* `make`: this will build the paper
-* `make $NAME-notodos.pdf`: this will build the paper with todos disabled (suitable for submission)
+* `make`: build the paper, `$NAME.pdf`
+* `make $NAME-notodos.pdf`: build the paper with todos disabled (suitable for submission)
+  * Alternatively: `make notodos`
+* `make $NAME-long.pdf`: build the long version of the paper
+   (including the text within `\iflongversion ... \fi`)
+  * Alternatively: `make long`
+* `make $NAME-long-notodos.pdf`: this will build the long version of the paper
+   with todos disabled
+  * Alternatively: `make long-notodos`
 * `make view`: this will build the paper and then open it (using the system's `open` command) for viewing
-* `make onefile.tex`: builds a version of the paper in a single `.tex` file, suitable for submission
+* `make onefile.tex`: creates a single `.tex` file containing the paper, suitable for submission
 to the publisher's website (i.e., with comments removed, etc.)
 
 ## Useful LaTeX macros
@@ -43,7 +50,16 @@ Here are some of the most useful macros defined in `macros.tex`:
 
 ## Overleaf
 
-If you copy this template to Overleaf, then Overleaf will show you a PDF with
-broken citations.  You can ignore this problem, but be sure to run `make` in
-this directory to generate a PDF with correct citations.  Also be sure to look
-at the output of `make`, because Overleaf suppresses some errors.
+If you copy this template to Overleaf, we recommend that you also look at
+the output of `make`, because Overleaf suppresses some errors.
+
+If you copy this template to Overleaf, then Overleaf will by default show
+you a PDF with broken citations.  You have two options:
+
+1. Ignore the problem when editing in Overleaf.  Run `make` in this
+directory to generate a PDF with correct citations whenever needed.
+
+2. Fix citations within Overleaf.  Periodically run `make copy-plume-bib`
+and commit and push the changes, including any files in the `plume-bib`
+subdirectory.  If you make changes within the `plume-bib` subdirectory,
+also submit a pull request to https://github.com/mernst/plume-bib .

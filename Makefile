@@ -4,18 +4,39 @@
 
 NAME	:= paper
 
+default: all
+
 all: ${NAME}.pdf
 
 .PRECIOUS: %.pdf
-${NAME}.pdf: plume-bib-update
-	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
+${NAME}.pdf: pdf-ignore-undefined
   # Fail the build if there are undefined references or citations.
 	@ ! grep "Warning: There were undefined references." "${NAME}.log"
 	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
 
-${NAME}-notodos.pdf: ${NAME}.pdf
+.PHONY: pdf-ignore-undefined
+pdf-ignore-undefined: plume-bib-update
+	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
+
+.PHONY: notodos
+notodos: ${NAME}-notodos.pdf
+${NAME}-notodos.pdf: pdf-ignore-undefined
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
 	pdflatex -shell-escape "\def\notodocomments{}\input{${NAME}}"
+	cp -pf ${NAME}.pdf $@
+
+.PHONY: long
+long: ${NAME}-long.pdf
+${NAME}-long.pdf: pdf-ignore-undefined
+	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\createlongversion{}\input{${NAME}}"
+	cp -pf ${NAME}.pdf $@
+
+.PHONY: long-notodos
+long-notodos: ${NAME}-long-notodos.pdf
+${NAME}-long-notodos.pdf: pdf-ignore-undefined
+	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
+	pdflatex -shell-escape "\def\createlongversion{}\def\notodocomments{}\input{${NAME}}"
 	cp -pf ${NAME}.pdf $@
 
 # You will upload onefile.zip to the publisher website after acceptance.
@@ -53,8 +74,20 @@ endif
 # However, to skip it, invoke make as:  make NOGIT=1 ...
 plume-bib-update: plume-bib
 ifndef NOGIT
+ifneq (,$(wildcard plume-bib/.git))
 	-(cd plume-bib && GIT_TERMINAL_PROMPT=0 git pull && make)
 endif
+endif
+
+plume-bib-copy:
+	rm -f master.zip
+	wget https://github.com/mernst/plume-bib/archive/refs/heads/master.zip
+	rm -rf plume-bib-master
+	unzip master.zip
+	rm -rf plume-bib
+	mv plume-bib-master plume-bib
+	sed -i 's/^plume-bib$$/# plume-bib/' .gitignore
+	rm -f master.zip
 
 .PHONY: tags
 TAGS: tags

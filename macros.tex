@@ -14,13 +14,20 @@
 \newcommand{\todo}[1]{{\color{red}\bfseries [[#1]]}}
 %% Comment or uncomment this line.
 %\renewcommand{\todo}[1]{\relax}
-
-\newcommand{\manu}[1]{\todo{#1 --MS}}
-
-% Don't show todo commands if this macro is defined.
+% Don't show todo commands if the \notodocomments macro is defined.
 \ifdefined\notodocomments
   \renewcommand{\todo}[1]{\relax}
 \fi
+
+\newcommand{\manu}[1]{\todo{#1 --MS}}
+
+
+% Include text in \iflongversion...fi if the \createlongversion macro is defined.
+\newif\iflongversion
+\ifdefined\createlongversion
+  \longversiontrue
+\fi
+\newcommand{\longversion}[1]{\iflongversion #1\else\relax\fi}
 
 % Use like: \ifanonymous{ANONYMOUS TEXT}\else{NON-ANONNYMOUS TEXT}\fi
 % where the "\else{NON-ANONNYMOUS TEXT}" may be omitted.
@@ -81,6 +88,7 @@
 %%% Miscellaneous
 
 \hyphenation{type-state}        % LaTeX defaults to "types-tate"
+\hyphenation{null-able}         % LaTeX defaults to "nul-lable"
 
 %%% Space-saving hacks
 
