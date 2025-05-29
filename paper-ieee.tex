@@ -1,0 +1,163 @@
+%%% This template uses IEEE formatting, for IEEE-sponsored conferences (such
+%%% as ICSE, every two years).  If you need ACM formatting, See `paper.tex`.
+
+\documentclass[conference]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+% tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+%\usepackage{algorithm}
+%\usepackage[noend]{algpseudocode}
+
+% xspace command
+\usepackage{xspace}
+
+% for the researchquestions environment
+\usepackage{enumitem}
+
+% From https://tex.stackexchange.com/questions/177025/
+%% \makeatletter
+%% \newcounter{algorithmicH}% New algorithmic-like hyperref counter
+%% \let\oldalgorithmic\algorithmic
+%% \renewcommand{\algorithmic}{%
+%%   \stepcounter{algorithmicH}% Step counter
+%%   \oldalgorithmic}% Do what was always done with algorithmic environment
+%% \renewcommand{\theHALG@line}{ALG@line.\thealgorithmicH.\arabic{ALG@line}}
+%% \makeatother
+
+% lstlisting command
+\usepackage{listings}
+\usepackage[scaled]{beramono}
+\newcommand*\LSTfont{\Small\fontencoding{T1}\ttfamily\SetTracking{encoding=*}{-60}\lsstyle}
+\lstset{language=Java,
+  frame=none,
+  aboveskip=1.5pt,
+  belowskip=0pt,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle=\LSTfont,
+  numbers=none,
+  numberstyle=\tiny\color{black},
+  keywordstyle=\color{black},
+  commentstyle=\color{black},
+  stringstyle=\color{black},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  %emph={@NonNegative,@Positive,@GTENegativeOne,@LTLengthOf,@LTEqLengthOf,@IndexFor,@IndexOrHigh,@IndexOrLow,@HasSubsequence,@LessThan,@SameLen,@SearchIndexFor,@MinLen,@ArrayLen,@IntVal,@IntRange,@LengthOf,@UpperBoundUnknown,@LowerBoundUnknown,int,double,List,Map,Object,SerialDate,Long,Integer,DefaultPolarItemRenderer,LegendItem,PolarPlot,XYDataset,long,T,String,string,byte,InputStream,CategoryDataset,DatasetRenderingOrder,ArrayList,Entry,Values,Number,ValuesContract,ImmutableIntArray,Dataset,XYZDataset}, emphstyle=\color{blue}
+}
+
+% Graphics
+% \usepackage{tikz}
+% \usetikzlibrary{arrows,automata,positioning}
+
+% Change font and line spacing for figure captions
+\usepackage{setspace,caption}
+\captionsetup{labelfont={small,bf}, textfont={small,bf,stretch=0.8}, labelsep=colon, margin=0pt}
+
+\usepackage{flushend} % balanced columns on last page
+
+\usepackage{url} % URLs; used in plume-bib
+
+% cref command; best to load last
+\usepackage{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+\input{macros}
+
+\title{Software Engineering Paper Template}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\begin{IEEEkeywords}
+datasets, neural networks, gaze detection, text tagging
+\end{IEEEkeywords}
+
+\input{introduction}
+
+\input{technique}
+
+\input{implementation}
+
+\input{evaluation}
+
+\input{limitations}
+
+\input{relatedwork}
+
+\input{conclusion}
+
+\todo{The page limit is {\conferencePageLimit} pages.  This is page \thepage.}
+
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{IEEEtran}
+\bibliography{local,plume-bib/bibstring-abbrev,plume-bib/types,plume-bib/dispatch,plume-bib/ernst,plume-bib/soft-eng,plume-bib/crossrefs}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+
+\end{document}
+\endinput
+%%
