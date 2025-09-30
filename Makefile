@@ -10,7 +10,7 @@ all: ${NAME}.pdf
 
 .PRECIOUS: %.pdf
 ${NAME}.pdf: pdf-ignore-undefined
-  # Fail the build if there are undefined references or citations.
+# Fail the build if there are undefined references or citations.
 	@ ! grep "Warning: There were undefined references." "${NAME}.log"
 	@ ! grep "Warning: There were undefined citations." "${NAME}.log"
 
