@@ -48,9 +48,8 @@ onefile.tex:
 	latex-process-inputs ${NAME}.tex > onefile.tex
 
 # To regenerate this list, run `make show-tex-files`
-show-tex-files:
-	latex-process-inputs --makefilelist ${NAME}.tex
-TEX_FILES=paper.tex \
+TEX_FILES=\
+paper.tex \
 macros.tex \
 abstract.tex \
 introduction.tex \
@@ -60,6 +59,9 @@ evaluation.tex \
 limitations.tex \
 relatedwork.tex \
 conclusion.tex
+
+show-tex-files:
+	@latex-process-inputs --makefilelist ${NAME}.tex
 
 # This target creates:
 #   https://homes.cs.washington.edu/~mernst/tmp678/${NAME}.pdf
