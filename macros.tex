@@ -1,12 +1,21 @@
-% Use a macro like this for your tool's name. Do not use your tool's name
-% in the text: always use the macro.
+% Should you use a macro for your tool name or write it directely in the
+% paper text?
+%  * If you may need to change the tool name for anonymized submission and
+%    then change it back, then use a macro like this for your tool's name.
+%    (Do not use your tool's name in the text: always use the macro.)
+%  * If your tool name is also a word that appears elsewhere in the paper
+%    with a different meaning (such as if your tool name is an English
+%    word) and you might rename the tool later, use a macro like this.
+%  * If neither of the above situations applies, then you might as
+%    well write the tool name directly in the text, which is easier to
+%    read.  You can do a trivial textual replacement if you rename the
+%    tool.
+% (Some people name the macro "\tool", but that makes the paper harder to
+% read for no real benefit.  The macro for the tool name can be trivially
+% replaced throughout the paper if necessary.)
 \newcommand{\theTypeInferenceFramework}{the Type Inference Framework\xspace}
 \newcommand{\TheTypeInferenceFramework}{The Type Inference Framework\xspace}
 \newcommand{\TIF}{TIF\xspace}
-%% Alternate formulation; use whichever of the two you prefer:
-% \newcommand{\tool}{the Type Inference Framework\xspace}
-% \newcommand{\Tool}{The Type Inference Framework\xspace}
-% \newcommand{\toolShort}{TIF\xspace}
 
 \newcommand{\conferencePageLimit}{10}
 
