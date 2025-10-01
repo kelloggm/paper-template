@@ -59,16 +59,21 @@ Here are some of the most useful macros defined in `macros.tex`:
 
 ## Overleaf
 
-If you copy this template to Overleaf, we recommend that you also look at
-the output of `make`, because Overleaf suppresses some errors.
+Overleaf suppresses some errors, so we recommend that you also look at the
+output of `make`.
 
-If you copy this template to Overleaf, then Overleaf will by default show
-you a PDF with broken citations.  You have two options:
+By default, Overleaf will show you a PDF with broken citations.  You have
+two options:
 
-1. Ignore the problem when editing in Overleaf.  Run `make` in this
+1. Make Overleaf produce correct citations.
+   * Change one line in `Makefile` from `pdf-ignore-undefined:
+     plume-bib-update` to `pdf-ignore-undefined:`.  That is, remove the
+     use of `plume-bib-update`.
+   * Periodically run `make copy-plume-bib` and commit and push the
+     changes, including any files in the `plume-bib` subdirectory.  To make
+     changes within the `plume-bib` subdirectory, please submit a pull
+     request to <https://github.com/mernst/plume-bib>.
+
+2. Ignore the problem when editing in Overleaf.  Run `make` in this
 directory to generate a PDF with correct citations whenever needed.
 
-2. Fix citations within Overleaf.  Periodically run `make copy-plume-bib`
-and commit and push the changes, including any files in the `plume-bib`
-subdirectory.  If you make changes within the `plume-bib` subdirectory,
-also submit a pull request to <https://github.com/mernst/plume-bib> .
