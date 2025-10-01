@@ -1,12 +1,26 @@
-% Use a macro like this for your tool's name. Do not use your tool's name
-% in the text: always use the macro.
+% Should you use a macro for your tool name or write it directly in the
+% paper text?  Use a macro like this for your tool's name if any of the
+% following applies:
+%  * You need to change the tool name for anonymized submission and then
+%    change it back.
+%  * Your tool name is also a word that appears elsewhere in the paper
+%    with a different meaning (such as if your tool name is an English
+%    word) and you might rename the tool later.
+%  * You would ordinarily use a macro because the name is hard to type or
+%    ugly to read in the LaTeX source.  This might be the case if the tool
+%    name contains unusual formatting, such as "IDE^{\mathit{al}}" or small
+%    capital letters.  But it is best to avoid such cuteness in tool names.
+%  * You find it more convenient or readable to use the macro.  There is
+%    not a big difference between writing the tool name or using the macro,
+%    so go with whichever one you prefer.
+% If the macro exists, never use your tool's name directly in the text:
+% always use the macro.
+% (Some people name the macro "\tool", but that makes the paper harder to
+% read for no real benefit.  The macro for the tool name can be trivially
+% replaced throughout the paper if necessary.)
 \newcommand{\theTypeInferenceFramework}{the Type Inference Framework\xspace}
 \newcommand{\TheTypeInferenceFramework}{The Type Inference Framework\xspace}
 \newcommand{\TIF}{TIF\xspace}
-%% Alternate formulation; use whichever of the two you prefer:
-% \newcommand{\tool}{the Type Inference Framework\xspace}
-% \newcommand{\Tool}{The Type Inference Framework\xspace}
-% \newcommand{\toolShort}{TIF\xspace}
 
 \newcommand{\conferencePageLimit}{10}
 
