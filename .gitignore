@@ -276,6 +276,9 @@ TSWLatexianTemp*
 # Texpad
 .texpadtmp
 
+# VS Code
+.vscode
+
 # LyX
 *.lyx~
 
