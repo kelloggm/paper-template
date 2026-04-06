@@ -47,22 +47,6 @@ onefile.zip: onefile.tex
 onefile.tex:
 	latex-process-inputs ${NAME}.tex > onefile.tex
 
-# To regenerate this list, run `make show-tex-files`
-TEX_FILES=\
-paper.tex \
-macros.tex \
-abstract.tex \
-introduction.tex \
-technique.tex \
-implementation.tex \
-evaluation.tex \
-limitations.tex \
-relatedwork.tex \
-conclusion.tex
-
-show-tex-files:
-	@latex-process-inputs --makefilelist ${NAME}.tex
-
 # This target creates:
 #   https://homes.cs.washington.edu/~mernst/tmp678/${NAME}.pdf
 web: ${NAME}-notodos.pdf
@@ -79,13 +63,13 @@ SPELLCHECK_B ?= hunspell -l -p .local-dict.txt
 spell:
 	@echo "Use `make spelli` or `make spellb` for interactive or batch spell-checking."
 spellcheck-interactive spell-interactive spelli:
-	for file in ${TEX_FILES}; do \
+	for file in `latex-process-inputs --list ${NAME}.tex`; do \
           ${SPELLCHECK_I} -t $$file; \
         done
 	@sort -o .local-dict.txt .local-dict.txt
 spellcheck-batch spell-batch spellb:
 	rm -rf misspelled-words.txt
-	for file in ${TEX_FILES}; do \
+	for file in `latex-process-inputs --list ${NAME}.tex`; do \
           cat $$file | ${SPELLCHECK_B} -t | sort -u >> misspelled-words.txt; \
         done
 	@sort -o .local-dict.txt .local-dict.txt
@@ -119,6 +103,7 @@ plume-bib-copy:
 	unzip master.zip
 	rm -rf plume-bib
 	mv plume-bib-master plume-bib
+	touch .gitignore
 	sed -i 's/^plume-bib$$/# plume-bib/' .gitignore
 	rm -f master.zip
 
