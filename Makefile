@@ -80,6 +80,9 @@ spellcheck-batch spell-batch spellb:
 abs-words:
 	grep -v 'Abstract' abstract.tex | egrep -v '^%' | wc -w
 
+# Choose between either "plume-bib-update" (to clone plume-bib)
+# or "plume-bib-copy" (to copy plume-bib's contents).
+
 plume-bib:
 ifdef PLUMEBIB
 	ln -s ${PLUMEBIB} $@
