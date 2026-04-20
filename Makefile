@@ -16,7 +16,7 @@ ${NAME}.pdf: pdf-ignore-undefined
 
 .PHONY: pdf-ignore-undefined
 pdf-ignore-undefined: plume-bib-update
-	latexmk -bibtex -pdf -shell-escape -synctex=1 -interaction=nonstopmode -f "${NAME}.tex"
+	latexmk -bibtex -pdf -shell-escape -synctex=1 -f -interaction=nonstopmode "${NAME}.tex"
 
 .PHONY: notodos
 notodos: ${NAME}-notodos.pdf
