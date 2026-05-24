@@ -44,6 +44,7 @@ onefile.zip: onefile.tex
 	zip onefile.zip onefile.tex acmart.cls ACM-Reference-Format.bst
 # The latex-process-inputs program is part of https://github.com/plume-lib/plume-scripts,
 # which is a collection of useful scripts. I recommend adding it to your PATH.
+.PHONY: onefile.tex
 onefile.tex:
 	latex-process-inputs ${NAME}.tex > onefile.tex
 
