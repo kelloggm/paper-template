@@ -9,10 +9,11 @@ jobs:
       image: texlive/texlive
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
           show-progress: false
+          persist-credentials: false
       # As of 2023-10-21, this update is necessary to get around a bug
       # in the acmart.class in the texlive/texlive docker image.
       # Retry up to 3 times in case of network failures.
