@@ -62,7 +62,7 @@ view: ${NAME}.pdf
 SPELLCHECK_I ?= hunspell -p .local-dict.txt
 SPELLCHECK_B ?= hunspell -l -p .local-dict.txt
 spell:
-	@echo "Use `make spelli` or `make spellb` for interactive or batch spell-checking."
+	@echo 'Use `make spelli` or `make spellb` for interactive or batch spell-checking.'
 spellcheck-interactive spell-interactive spelli:
 	for file in `latex-process-inputs --list ${NAME}.tex`; do \
           ${SPELLCHECK_I} -t $$file; \
